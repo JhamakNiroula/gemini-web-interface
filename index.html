@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gemini AI Interface</title>
+</head>
+<body>
+    <h2>Ask Gemini AI</h2>
+    <input type="text" id="userInput" placeholder="Type your prompt here...">
+    <button onclick="handleRequest()">Submit</button>
+
+    <div id="output" style="margin-top: 15px; white-space: pre-wrap;"></div>
+
+    <!-- This links your JavaScript helper file to this HTML page -->
+    <script src="gemini-client.js"></script>
+
+    <script>
+        async function handleRequest() {
+            const prompt = document.getElementById('userInput').value;
+            const outputElement = document.getElementById('output');
+            
+            outputElement.innerText = "Thinking...";
+            // Calls the function defined inside gemini-client.js
+            const result = await askGemini(prompt);
+            outputElement.innerText = result;
+        }
+    </script>
+</body>
+</html>
